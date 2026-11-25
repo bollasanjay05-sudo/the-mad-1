@@ -1,213 +1,97 @@
-// --- MOCK DATA (Add your new images here as they come) ---
+/* THE MAD ENGINEER & CO. — storefront controller
+   All imagery is locally bundled original/concept artwork. Quote checkout only.
+   Add your digits-only WhatsApp business number below before publishing. */
+const WHATSAPP_NUMBER = '';
+const AS = 'assets/';
+const REFERENCE_ASSET_BASE = 'https://raw.githubusercontent.com/bollasanjay05-sudo/themadengineer-co/main/assets/';
 const products = [
-  // APPAREL
-  { id: 'squirrel-tee', name: 'Look Mom I Can Fly Tee', price: 'Quote', category: 'Apparel', subcategory: 'T-Shirts', image: 'assets/images/squirrel-tee.jpg', collection: 'Meme' },
-  { id: 'panda-tee', name: 'Inner Peace Panda Tee', price: 'Quote', category: 'Apparel', subcategory: 'T-Shirts', image: 'assets/images/panda-tee.jpg', collection: 'Zen' },
-  { id: 'superman-tee', name: 'Chibi Superman Tee', price: 'Quote', category: 'Apparel', subcategory: 'T-Shirts', image: 'assets/images/superman-tee.jpg', collection: 'Comics' },
-  { id: 'kurama-tee', name: 'Nine Tails Kurama Tee', price: 'Quote', category: 'Apparel', subcategory: 'T-Shirts', image: 'assets/images/kurama-tee.jpg', collection: 'Anime' },
-  { id: 'summertime-tee', name: 'Summertime Vintage Tee', price: 'Quote', category: 'Apparel', subcategory: 'T-Shirts', image: 'assets/images/summertime-tee.jpg', collection: 'Aesthetic' },
-  { id: 'catdad-tee', name: 'Cat Dad Club Tee', price: 'Quote', category: 'Apparel', subcategory: 'T-Shirts', image: 'assets/images/catdad-tee.jpg', collection: 'Pets' },
-  { id: 'ramen-cat-tee', name: 'Ramen Cat Tee', price: 'Quote', category: 'Apparel', subcategory: 'T-Shirts', image: 'assets/images/ramen-cat-tee.jpg', collection: 'Food' },
-  { id: 'retro-girl-tee', name: 'Retro Collage Tee', price: 'Quote', category: 'Apparel', subcategory: 'T-Shirts', image: 'assets/images/retro-girl-tee.jpg', collection: 'Retro' },
-  { id: 'strawberry-tee', name: 'Another Strawberry Tee', price: 'Quote', category: 'Apparel', subcategory: 'T-Shirts', image: 'assets/images/strawberry-tee.jpg', collection: 'Aesthetic' },
-  { id: 'inbloom-tee', name: 'In Bloom Stamp Tee', price: 'Quote', category: 'Apparel', subcategory: 'T-Shirts', image: 'assets/images/inbloom-tee.jpg', collection: 'Minimalist' },
-  { id: 'turtle-hoodie', name: 'ORNG Deep Sea Hoodie', price: 'Quote', category: 'Apparel', subcategory: 'Hoodies', image: 'assets/images/turtle-hoodie.jpg', collection: 'Ocean' },
-  
-  // DRINKWARE
-  { id: 'tumbler', name: 'Sound of Music Tumbler', price: 'Quote', category: 'Drinkware', subcategory: 'Tumblers', image: 'assets/images/tumbler.jpg', collection: 'Custom' },
-
-  // PHOTO GIFTS
-  { id: 'shadow-box', name: 'Custom Collage Shadow Box', price: 'Quote', category: 'Photo Gifts', subcategory: 'Frames', image: 'assets/images/shadow-box.jpg', collection: 'Memory' },
-  { id: 'white-frame', name: 'Lucky To Have You Frame', price: 'Quote', category: 'Photo Gifts', subcategory: 'Frames', image: 'assets/images/white-frame.jpg', collection: 'Memory' },
-  { id: 'magnets', name: 'Colorful Photo Magnets', price: 'Quote', category: 'Photo Gifts', subcategory: 'Magnets', image: 'assets/images/magnets.jpg', collection: 'Fridge' },
-  { id: 'mini-calendars', name: 'Floral Mini Calendars', price: 'Quote', category: 'Photo Gifts', subcategory: 'Calendars', image: 'assets/images/mini-calendars.jpg', collection: 'Stationery' },
-  { id: 'wall-calendar', name: 'Custom Photo Wall Calendar', price: 'Quote', category: 'Photo Gifts', subcategory: 'Calendars', image: 'assets/images/wall-calendar.jpg', collection: 'Stationery' }
+  {id:'squirrel-tee',name:'Look Mom I Can Fly Tee',category:'Apparel',subcategory:'T-Shirts',collection:'Meme',image:AS+'images/squirrel-tee.webp'},
+  {id:'panda-tee',name:'Inner Peace Panda Tee',category:'Apparel',subcategory:'T-Shirts',collection:'Zen',image:AS+'images/panda-tee.webp'},
+  {id:'superman-tee',name:'Comic Hero Tee',category:'Apparel',subcategory:'T-Shirts',collection:'Comics',image:AS+'images/superman-tee.webp'},
+  {id:'kurama-tee',name:'Mythic Creature Tee',category:'Apparel',subcategory:'T-Shirts',collection:'Anime-Inspired',image:AS+'images/kurama-tee.webp'},
+  {id:'summertime-tee',name:'Summertime Vintage Tee',category:'Apparel',subcategory:'T-Shirts',collection:'Aesthetic',image:AS+'images/summertime-tee.webp'},
+  {id:'catdad-tee',name:'Cat Dad Club Tee',category:'Apparel',subcategory:'T-Shirts',collection:'Pets',image:AS+'images/catdad-tee.webp'},
+  {id:'ramen-cat-tee',name:'Ramen Cat Tee',category:'Apparel',subcategory:'T-Shirts',collection:'Food',image:AS+'images/ramen-cat-tee.webp'},
+  {id:'retro-girl-tee',name:'Retro Collage Tee',category:'Apparel',subcategory:'T-Shirts',collection:'Retro',image:AS+'images/retro-girl-tee.webp'},
+  {id:'strawberry-tee',name:'Another Strawberry Tee',category:'Apparel',subcategory:'T-Shirts',collection:'Aesthetic',image:AS+'images/strawberry-tee.webp'},
+  {id:'inbloom-tee',name:'In Bloom Stamp Tee',category:'Apparel',subcategory:'T-Shirts',collection:'Minimalist',image:AS+'images/inbloom-tee.webp'},
+  {id:'turtle-hoodie',name:'Deep Sea Hoodie',category:'Apparel',subcategory:'Hoodies',collection:'Ocean',image:AS+'images/turtle-hoodie.webp'},
+  {id:'hero-hoodie',name:'Original Hero Hoodie',category:'Apparel',subcategory:'Hoodies',collection:'Comics',image:REFERENCE_ASSET_BASE+'editorial/hoodies.webp'},
+  {id:'long-sleeve',name:'Original Graphic Full Sleeve',category:'Apparel',subcategory:'Full Sleeves',collection:'Comics',image:REFERENCE_ASSET_BASE+'photos/tee-long.webp'},
+  {id:'printed-polo',name:'Custom Polo Shirt',category:'Apparel',subcategory:'Polo Shirts',collection:'Minimalist',image:REFERENCE_ASSET_BASE+'photos/polo.webp'},
+  {id:'tumbler',name:'Monster Mood Tumbler',category:'Drinkware',subcategory:'Tumblers',collection:'Custom',image:AS+'images/tumbler.webp'},
+  {id:'scenic-bottle',name:'Scenic Water Bottle',category:'Drinkware',subcategory:'Bottles',collection:'Nature',image:REFERENCE_ASSET_BASE+'photos/bottle.webp'},
+  {id:'meme-mug',name:'Debug My Life Mug',category:'Drinkware',subcategory:'Mugs',collection:'Meme',image:REFERENCE_ASSET_BASE+'photos/mug.webp'},
+  {id:'shadow-box',name:'Custom Collage Shadow Box',category:'Photo Gifts',subcategory:'Frames',collection:'Memory',image:AS+'images/shadow-box.webp'},
+  {id:'white-frame',name:'Memory Frame',category:'Photo Gifts',subcategory:'Frames',collection:'Memory',image:AS+'images/white-frame.webp'},
+  {id:'magnets',name:'Colorful Photo Magnets',category:'Photo Gifts',subcategory:'Magnets',collection:'Fridge',image:AS+'images/magnets.webp'},
+  {id:'mini-calendars',name:'Floral Mini Calendars',category:'Photo Gifts',subcategory:'Calendars',collection:'Stationery',image:AS+'images/mini-calendars.webp'},
+  {id:'wall-calendar',name:'Custom Photo Wall Calendar',category:'Photo Gifts',subcategory:'Calendars',collection:'Stationery',image:AS+'images/wall-calendar.webp'},
+  {id:'photo-keychain',name:'Custom Photo Keychain',category:'Photo Gifts',subcategory:'Keychains',collection:'Personal',image:REFERENCE_ASSET_BASE+'products/photo-keychain.svg'},
+  {id:'cap',name:'Expressive Print Cap',category:'Accessories',subcategory:'Caps',collection:'Meme',image:REFERENCE_ASSET_BASE+'photos/cap.webp'},
+  {id:'tote-bag',name:'Printed Tote Bag',category:'Accessories',subcategory:'Bags',collection:'Meme',image:REFERENCE_ASSET_BASE+'photos/tote.webp'},
+  {id:'backpack',name:'Botanical Backpack',category:'Accessories',subcategory:'Bags',collection:'Nature',image:REFERENCE_ASSET_BASE+'photos/backpack.webp'},
+  {id:'custom-pendant',name:'Custom Pendant',category:'Accessories',subcategory:'Pendants',collection:'Personal',image:REFERENCE_ASSET_BASE+'products/pendant.svg'},
+  {id:'phonecase',name:'Creative Phone Case',category:'Tech & Desk',subcategory:'Phone Cases',collection:'Original Art',image:REFERENCE_ASSET_BASE+'mockups/phonecase--2.svg'},
+  {id:'mousepad',name:'Printed Mousepad',category:'Tech & Desk',subcategory:'Mousepads',collection:'Original Art',image:REFERENCE_ASSET_BASE+'products/mousepad.svg'},
+  {id:'business-cards',name:'Branded Business Cards',category:'Print & Business',subcategory:'Business Cards',collection:'Corporate',image:REFERENCE_ASSET_BASE+'products/business-cards.svg'},
+  {id:'takeaway-box',name:'Custom Takeaway Boxes',category:'Print & Business',subcategory:'Packaging',collection:'Corporate',image:REFERENCE_ASSET_BASE+'editorial/business.webp'},
+  {id:'metal-poster',name:'Printed Metal Poster',category:'Print & Business',subcategory:'Posters',collection:'Original Art',image:REFERENCE_ASSET_BASE+'products/metal-poster.svg'},
+  {id:'photo-booth',name:'Photo Booth for Events',category:'Events & DIY',subcategory:'Event Services',collection:'Events',image:REFERENCE_ASSET_BASE+'products/photo-booth.svg',service:true},
+  {id:'event-magnets',name:'Event Photo Magnets',category:'Events & DIY',subcategory:'Event Keepsakes',collection:'Events',image:REFERENCE_ASSET_BASE+'products/photo-magnet.svg',service:true},
+  {id:'diy-birthday',name:'DIY Birthday Kit',category:'Events & DIY',subcategory:'DIY Kits',collection:'Birthdays',image:REFERENCE_ASSET_BASE+'products/diy-birthday.svg',service:true},
+  {id:'diy-paint',name:'DIY Creative Paint Kit',category:'Events & DIY',subcategory:'DIY Kits',collection:'Birthdays',image:REFERENCE_ASSET_BASE+'products/diy-paint.svg',service:true}
 ];
-
-// --- STATE ---
-let cart = JSON.parse(localStorage.getItem('mad_cart')) || [];
-let currentCategory = 'All';
-let searchQuery = '';
-
-// --- DOM ELEMENTS ---
-const productGrid = document.getElementById('product-grid');
-const cartCount = document.getElementById('cart-count');
-const cartDrawer = document.getElementById('cart-drawer');
-const overlay = document.getElementById('overlay');
-const cartItemsContainer = document.getElementById('cart-items');
-const resultsSummary = document.getElementById('results-summary');
-const noResults = document.getElementById('no-results');
-
-// --- INITIALIZATION ---
-document.addEventListener('DOMContentLoaded', () => {
-  // Handle Image Loading Transitions
-  const images = document.querySelectorAll('img');
-  images.forEach(img => {
-    if (img.complete) img.classList.add('loaded');
-    else img.addEventListener('load', () => img.classList.add('loaded'));
-  });
-
-  renderProducts();
-  updateCartUI();
-  setupScrollReveal();
-  setupEventListeners();
-});
-
-// --- SCROLL REVEAL ANIMATION ---
-function setupScrollReveal() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const categories=['Apparel','Photo Gifts','Drinkware','Accessories','Tech & Desk','Print & Business','Events & DIY'];
+const selected={category:'Apparel',subcategory:'T-Shirts',collection:'All'};
+let searchQuery='';let sortMode='featured';let cart=[];
+try {const saved=JSON.parse(localStorage.getItem('mad_cart')||'[]');if(Array.isArray(saved))cart=saved.filter(x=>x&&x.id&&Number.isFinite(Number(x.qty)));}catch(e){cart=[]}
+const $=id=>document.getElementById(id);
+const esc=(v)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function remember(){try{localStorage.setItem('mad_cart',JSON.stringify(cart))}catch(e){}}
+function showToast(message){const t=$('toast');t.textContent=message;t.classList.add('active');clearTimeout(showToast.timeout);showToast.timeout=setTimeout(()=>t.classList.remove('active'),2700)}
+function openCart(){const o=$('overlay'),d=$('cart-drawer');o.hidden=false;requestAnimationFrame(()=>o.classList.add('active'));d.classList.add('active');d.setAttribute('aria-hidden','false');document.body.classList.add('no-scroll');$('close-cart').focus()}
+function closeCart(){const o=$('overlay'),d=$('cart-drawer');o.classList.remove('active');d.classList.remove('active');d.setAttribute('aria-hidden','true');setTimeout(()=>{if(!d.classList.contains('active'))o.hidden=true},310);document.body.classList.remove('no-scroll')}
+function toggleCart(){if($('cart-drawer').classList.contains('active'))closeCart();else openCart()}
+function openProductModal(id){const p=products.find(x=>x.id===id);if(!p)return;closeCart();const body=$('product-modal-body');const isApparel=p.category==='Apparel';const isEvent=p.service;
+ body.innerHTML=`<form id="product-customizer" class="modal-grid"><img src="${esc(p.image)}" alt="${esc(p.name)} concept design"><div><span class="section-kicker"><span class="kicker-square"></span> ${esc(p.collection)} COLLECTION / QUOTE BASED</span><h2 id="modal-title">${esc(p.name)}</h2><p>Choose options and describe your personal design. We’ll confirm artwork, price, materials and delivery through WhatsApp.</p><div class="option-fields">${isApparel?`<label class="option-field"><span>SIZE</span><select name="size"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option><option value="Custom">Custom size</option></select></label>`:''}<label class="option-field"><span>COLOUR / FINISH</span><select name="colour"><option>Green</option><option>White</option><option>Any / discuss</option></select></label><label class="option-field"><span>QUANTITY</span><input type="number" name="qty" min="1" max="10000" step="1" value="1" required></label>${isEvent?`<label class="option-field"><span>EVENT DATE</span><input type="date" name="eventDate"></label>`:''}<label class="option-field full"><span>PERSONALIZATION / NOTES</span><textarea rows="3" name="notes" maxlength="600" placeholder="Name, artwork theme, print location, delivery requests..."></textarea></label></div><button class="button button-dark modal-submit" type="submit">ADD TO YOUR QUOTE CART ↗</button></div></form>`;
+ const modal=$('product-modal');modal.classList.add('active');modal.setAttribute('aria-hidden','false');document.body.classList.add('no-scroll');$('close-modal').focus();
+ $('product-customizer').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);const qty=Math.min(10000,Math.max(1,Math.floor(Number(f.get('qty'))||1)));const options={size:String(f.get('size')||''),colour:String(f.get('colour')||''),eventDate:String(f.get('eventDate')||''),notes:String(f.get('notes')||'').trim()};const key=[p.id,options.size,options.colour,options.eventDate,options.notes].join('|');const existing=cart.find(x=>x.key===key);if(existing)existing.qty+=qty;else cart.push({key,id:p.id,name:p.name,image:p.image,qty,options});remember();updateCartUI();closeProductModal();openCart();showToast(`${p.name} added to cart`)});
 }
-
-// --- RENDER PRODUCTS ---
-function renderProducts() {
-  let filtered = products.filter(p => {
-    const matchCat = currentCategory === 'All' || p.category === currentCategory;
-    const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.collection.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchCat && matchSearch;
-  });
-
-  resultsSummary.innerText = `SHOWING ${filtered.length} DESIGNS`;
-
-  if (filtered.length === 0) {
-    productGrid.style.display = 'none';
-    noResults.hidden = false;
-  } else {
-    productGrid.style.display = 'grid';
-    noResults.hidden = true;
-    productGrid.innerHTML = filtered.map(p => `
-      <div class="product-card reveal active" onclick="openProductModal('${p.id}')">
-        <img src="${p.image}" alt="${p.name}" loading="lazy">
-        <div class="product-info">
-          <h3>${p.name}</h3>
-          <p>${p.collection} Collection</p>
-          <button class="button button-dark" style="margin-top:1rem; width:100%; justify-content:center;">View Details</button>
-        </div>
-      </div>
-    `).join('');
-  }
+function closeProductModal(){const modal=$('product-modal');modal.classList.remove('active');modal.setAttribute('aria-hidden','true');document.body.classList.remove('no-scroll')}
+function updateCartUI(){const count=cart.reduce((a,b)=>a+(Number(b.qty)||0),0);$('cart-count').textContent=count;$('drawer-count').textContent=`(${count})`;
+ $('cart-items').innerHTML=cart.length?cart.map((x,i)=>`<article class="cart-row"><img src="${esc(x.image)}" alt="${esc(x.name)}"><div class="cart-row-main"><h4>${esc(x.name)}</h4><p>${esc([x.options?.size,x.options?.colour].filter(Boolean).join(' · '))}</p>${x.options?.notes?`<p>${esc(x.options.notes)}</p>`:''}${x.options?.eventDate?`<p>Event: ${esc(x.options.eventDate)}</p>`:''}<div class="cart-qty"><button type="button" data-change="${i}" data-delta="-1" aria-label="Decrease ${esc(x.name)} quantity">−</button><strong>${x.qty}</strong><button type="button" data-change="${i}" data-delta="1" aria-label="Increase ${esc(x.name)} quantity">+</button><button type="button" class="cart-remove" data-remove="${i}">Remove</button></div></div></article>`).join(''):'<p style="text-align:center;padding:35px 0">Your cart is empty. Find your first design!</p>'}
+function makeCartMessage(){const name=$('checkout-name').value.trim();const lines=[`Hi THE MAD ENGINEER & CO.! I'd like a quote for the following items:`, ''];cart.forEach((x,i)=>{lines.push(`${i+1}. ${x.name} — Qty: ${x.qty}`);if(x.options?.size)lines.push(`   Size: ${x.options.size}`);if(x.options?.colour)lines.push(`   Colour/finish: ${x.options.colour}`);if(x.options?.eventDate)lines.push(`   Event date: ${x.options.eventDate}`);if(x.options?.notes)lines.push(`   Customization: ${x.options.notes}`)});if(name)lines.push('',`Name: ${name}`);lines.push('','Please confirm pricing, artwork options and delivery.');return lines.join('\n')}
+function whatsappUrl(message){const clean=WHATSAPP_NUMBER.replace(/\D/g,'');return clean?`https://wa.me/${clean}?text=${encodeURIComponent(message)}`:`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`}
+function checkout(){if(!cart.length)return showToast('Add a product to your cart first');window.open(whatsappUrl(makeCartMessage()),'_blank','noopener,noreferrer')}
+function railCard(label,image,subtitle,active,data){return `<button class="catalog-card ${active?'active':''}" type="button" ${data}><img src="${esc(image)}" loading="lazy" alt="${esc(label)} concept"><span class="catalog-card-body"><strong>${esc(label)}</strong><small>${esc(subtitle)}</small></span></button>`}
+const categoryPhoto={Apparel:'assets/images/summertime-tee.webp','Photo Gifts':'assets/images/shadow-box.webp',Drinkware:'assets/images/tumbler.webp',Accessories:'assets/images/magnets.webp','Tech & Desk':'assets/images/superman-tee.webp','Print & Business':'assets/images/mini-calendars.webp','Events & DIY':'assets/images/mini-calendars.webp'};
+function featuredProduct(predicate){return products.find(predicate)||products[0]}
+function renderRails(){const inCat=products.filter(p=>p.category===selected.category);const subs=[...new Set(inCat.map(p=>p.subcategory))];if(!subs.includes(selected.subcategory))selected.subcategory=subs[0];const inSub=inCat.filter(p=>p.subcategory===selected.subcategory);const cols=['All',...[...new Set(inSub.map(p=>p.collection))]];if(!cols.includes(selected.collection))selected.collection='All';
+ $('category-rail').innerHTML=categories.map(x=>railCard(x,categoryPhoto[x],`${products.filter(p=>p.category===x).length} DESIGNS`,selected.category===x,`data-cat="${esc(x)}"`)).join('');
+ $('subcategory-rail').innerHTML=subs.map(x=>railCard(x,featuredProduct(p=>p.category===selected.category&&p.subcategory===x).image,`${inCat.filter(p=>p.subcategory===x).length} ITEMS`,selected.subcategory===x,`data-sub="${esc(x)}"`)).join('');
+ $('collection-rail').innerHTML=cols.map(x=>railCard(x==='All'?'All Collections':x,featuredProduct(p=>p.category===selected.category&&p.subcategory===selected.subcategory&&(x==='All'||p.collection===x)).image,`${x==='All'?inSub.length:inSub.filter(p=>p.collection===x).length} DESIGNS`,selected.collection===x,`data-collection="${esc(x)}"`)).join('');
+ $('subcategory-heading').innerHTML=`SHOP ${esc(selected.category.toUpperCase())}<span class="lime-dot">.</span>`;$('subcategory-description').textContent=`Choose a ${selected.category.toLowerCase()} type.`;
+ $('browse-path').textContent=[selected.category,selected.subcategory,selected.collection==='All'?'All Collections':selected.collection].join(' / ').toUpperCase();
+ renderProducts()}
+function renderProducts(){let filtered=products.filter(p=>{const searching=searchQuery.trim().length>0;const text=[p.name,p.category,p.subcategory,p.collection].join(' ').toLowerCase();return searching?text.includes(searchQuery.toLowerCase()):(p.category===selected.category&&p.subcategory===selected.subcategory&&(selected.collection==='All'||p.collection===selected.collection))});if(sortMode==='az')filtered.sort((a,b)=>a.name.localeCompare(b.name));if(sortMode==='za')filtered.sort((a,b)=>b.name.localeCompare(a.name));$('results-summary').textContent=`SHOWING ${filtered.length} DESIGNS`;
+ $('product-list-heading').innerHTML=`${searchQuery?'SEARCH RESULTS':selected.collection==='All'?'ALL PRINTS':esc(selected.collection.toUpperCase())}<span class="lime-dot">.</span>`;
+ $('product-grid').innerHTML=filtered.map(p=>`<article class="product-card"><button type="button" data-product="${esc(p.id)}" aria-label="Customize ${esc(p.name)}"><div class="product-card-image"><img src="${esc(p.image)}" alt="${esc(p.name)} original concept mockup" loading="lazy"><span class="product-chip">QUOTE BASED</span></div><div class="product-info"><h3>${esc(p.name)}</h3><p>${esc(p.collection)} / ${esc(p.subcategory)}</p><span class="product-link">CUSTOMIZE THIS <span>↗</span></span></div></button></article>`).join('');$('no-results').hidden=filtered.length>0;
 }
-
-// --- EVENT LISTENERS ---
-function setupEventListeners() {
-  // Search
-  document.getElementById('product-search').addEventListener('input', (e) => {
-    searchQuery = e.target.value;
-    renderProducts();
-  });
-
-  // Cart Open/Close
-  document.getElementById('cart-trigger').addEventListener('click', toggleCart);
-  document.getElementById('close-cart').addEventListener('click', toggleCart);
-  overlay.addEventListener('click', toggleCart);
-
-  // Checkout
-  document.getElementById('checkout-button').addEventListener('click', () => {
-    if (cart.length === 0) return showToast('Your cart is empty!');
-    const name = document.getElementById('checkout-name').value;
-    let msg = `Hi THE MAD ENGINEER & CO.! I'd like a quote for:\n\n`;
-    cart.forEach(item => { msg += `- ${item.name} (Qty: ${item.qty})\n`; });
-    if (name) msg += `\nName: ${name}`;
-    window.open(`https://wa.me/1234567890?text=${encodeURIComponent(msg)}`, '_blank');
-  });
+function setCategory(cat,sub){if(!categories.includes(cat))return;selected.category=cat;selected.subcategory=sub||products.find(x=>x.category===cat)?.subcategory||'';selected.collection='All';searchQuery='';$('product-search').value='';renderRails()}
+function setupScrollReveal(){if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(x=>x.classList.add('active'));return}const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');obs.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(x=>obs.observe(x))}
+function setup(){renderRails();updateCartUI();setupScrollReveal();$('current-year').textContent=new Date().getFullYear();
+ $('cart-trigger').addEventListener('click',toggleCart);$('close-cart').addEventListener('click',closeCart);$('overlay').addEventListener('click',closeCart);$('close-modal').addEventListener('click',closeProductModal);$('checkout-button').addEventListener('click',checkout);
+ $('product-grid').addEventListener('click',e=>{const b=e.target.closest('[data-product]');if(b)openProductModal(b.dataset.product)});
+ $('cart-items').addEventListener('click',e=>{const remove=e.target.closest('[data-remove]'),change=e.target.closest('[data-change]');if(remove){cart.splice(Number(remove.dataset.remove),1);remember();updateCartUI()}if(change){const i=Number(change.dataset.change);cart[i].qty+=Number(change.dataset.delta);if(cart[i].qty<1)cart.splice(i,1);remember();updateCartUI()}});
+ for(const id of ['category-rail','subcategory-rail','collection-rail'])$(id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.cat)setCategory(b.dataset.cat);else if(b.dataset.sub){selected.subcategory=b.dataset.sub;selected.collection='All';renderRails()}else if(b.dataset.collection){selected.collection=b.dataset.collection;renderRails()}});
+ $('product-search').addEventListener('input',e=>{searchQuery=e.target.value.trim();renderProducts()});$('product-sort').addEventListener('change',e=>{sortMode=e.target.value;renderProducts()});$('clear-filters').addEventListener('click',()=>setCategory('Apparel','T-Shirts'));$('reset-browse').addEventListener('click',()=>setCategory('Apparel','T-Shirts'));
+ document.querySelectorAll('[data-rail-dir]').forEach(btn=>btn.addEventListener('click',()=>{const rail=$(btn.dataset.rail);rail.scrollBy({left:(btn.dataset.railDir==='next'?1:-1)*rail.clientWidth*.8,behavior:'smooth'})}));
+ document.querySelectorAll('[data-feature-product]').forEach(b=>b.addEventListener('click',()=>openProductModal(b.dataset.featureProduct)));
+ $('mobile-menu-button').addEventListener('click',()=>{const menu=$('mobile-menu');const open=menu.classList.toggle('open');$('mobile-menu-button').setAttribute('aria-expanded',String(open))});document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{$('mobile-menu').classList.remove('open');$('mobile-menu-button').setAttribute('aria-expanded','false')}));
+ $('footer-whatsapp').addEventListener('click',()=>window.open(whatsappUrl('Hello THE MAD ENGINEER & CO.! I have a question about custom products.'),'_blank','noopener,noreferrer'));
+ $('bulk-cta').addEventListener('click',()=>window.open(whatsappUrl('Hi THE MAD ENGINEER & CO.! I would like a bulk-order quote. Product:  Quantity:  Delivery date: '),'_blank','noopener,noreferrer'));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('product-modal').classList.contains('active'))closeProductModal();if($('cart-drawer').classList.contains('active'))closeCart()}});
 }
-
-// --- CART LOGIC ---
-function toggleCart() {
-  const isOpen = cartDrawer.classList.contains('active');
-  if (isOpen) {
-    cartDrawer.classList.remove('active');
-    overlay.classList.remove('active');
-    setTimeout(() => overlay.hidden = true, 300);
-  } else {
-    overlay.hidden = false;
-    setTimeout(() => overlay.classList.add('active'), 10);
-    cartDrawer.classList.add('active');
-  }
-}
-
-function addToCart(id) {
-  const product = products.find(p => p.id === id);
-  const existing = cart.find(item => item.id === id);
-  if (existing) existing.qty++;
-  else cart.push({ ...product, qty: 1 });
-  
-  saveCart();
-  updateCartUI();
-  showToast(`${product.name} added to cart!`);
-  toggleCart(); // Open cart to show the user
-}
-
-function removeFromCart(id) {
-  cart = cart.filter(item => item.id !== id);
-  saveCart();
-  updateCartUI();
-}
-
-function saveCart() {
-  localStorage.setItem('mad_cart', JSON.stringify(cart));
-}
-
-function updateCartUI() {
-  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-  cartCount.innerText = totalItems;
-  document.getElementById('drawer-count').innerText = `(${totalItems})`;
-
-  if (cart.length === 0) {
-    cartItemsContainer.innerHTML = `<p style="text-align:center; color:var(--text-muted); margin-top:2rem;">Your cart is empty.</p>`;
-    return;
-  }
-
-  cartItemsContainer.innerHTML = cart.map(item => `
-    <div style="display:flex; gap:1rem; margin-bottom:1rem; align-items:center; border-bottom:1px solid var(--border); padding-bottom:1rem;">
-      <img src="${item.image}" style="width:60px; height:60px; border-radius:8px; object-fit:cover;">
-      <div style="flex:1;">
-        <h4 style="font-size:1rem; margin-bottom:0.2rem;">${item.name}</h4>
-        <p style="font-size:0.9rem;">Qty: ${item.qty}</p>
-      </div>
-      <button onclick="removeFromCart('${item.id}')" style="color:red; font-size:1.5rem;">&times;</button>
-    </div>
-  `).join('');
-}
-
-// --- PRODUCT MODAL ---
-window.openProductModal = function(id) {
-  const p = products.find(prod => prod.id === id);
-  const modal = document.getElementById('product-modal');
-  const body = document.getElementById('product-modal-body');
-  
-  body.innerHTML = `
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; align-items:center;">
-      <img src="${p.image}" style="width:100%; border-radius:16px;">
-      <div>
-        <span class="section-kicker">${p.collection} COLLECTION</span>
-        <h2 style="font-size:3rem; margin-bottom:1rem;">${p.name}</h2>
-        <p style="margin-bottom:2rem;">Premium quality custom print. Upload your own design or choose from our original graphics. Price available on request.</p>
-        <button class="button button-dark" style="width:100%; justify-content:center;" onclick="addToCart('${p.id}')">ADD TO CART <span>↗</span></button>
-      </div>
-    </div>
-  `;
-  
-  modal.setAttribute('aria-hidden', 'false');
-  modal.classList.add('active');
-  document.getElementById('close-modal').onclick = () => {
-    modal.setAttribute('aria-hidden', 'true');
-    modal.classList.remove('active');
-  };
-}
-
-// --- TOAST NOTIFICATION ---
-function showToast(msg) {
-  const toast = document.getElementById('toast');
-  toast.innerText = msg;
-  toast.classList.add('active');
-  setTimeout(() => toast.classList.remove('active'), 3000);
-}
+window.madStore={setCategory,openProductModal,products};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
